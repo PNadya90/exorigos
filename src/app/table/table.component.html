@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-12">
+    <br />
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">
+            <div class="id-head">ID <i class="bi bi-sort-numeric-up"></i></div>
+          </th>
+          <th scope="col">Name <i class="bi bi-sort-alpha-up"></i></th>
+          <th scope="col">Description <i class="bi bi-sort-alpha-up"></i></th>
+          <th scope="col">Picture</th>
+          <th scope="col">Price<i class="bi bi-sort-numeric-up"></i></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let productItem of productsList; let i = index">
+          <th scope="row">{{ productItem.id }}</th>
+          <td>{{ productItem.title }}</td>
+          <td>{{ productItem.description }}</td>
+          <td>
+            <img
+              [src]="productItem?.image"
+              alt="Img"
+              class="img-responsive"
+              style="max-height: 80px"
+            />
+          </td>
+          <td>{{ productItem.price | currency }}</td>
+          <td>
+            <div class="edit-btn">
+              <a
+                href="/"
+                class="bn5"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                (click)="onEdit(productItem)"
+                >Edit</a
+              >
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-modal-window></app-modal-window>

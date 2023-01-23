@@ -1,0 +1,29 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <img src="/assets/Logo.jpg" alt="Logo" style="max-height: 80px" />
+    <form
+      class="d-flex"
+      (submit)="onSearchProduct($event)"
+      [formGroup]="searchForm"
+    >
+      <input
+        class="form-control me-2"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+        formControlName="searchInput"
+      />
+      <button class="btn btn-light" type="submit">Search</button>
+    </form>
+  </div>
+  <div class="add-btn">
+    <a
+      href="/"
+      class="bn5"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      >Add Product</a
+    >
+  </div>
+</nav>
+<app-modal-window></app-modal-window>

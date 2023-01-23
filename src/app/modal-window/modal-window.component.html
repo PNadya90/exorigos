@@ -1,0 +1,78 @@
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          {{ id ? "Edit item ID:" : "New Product" }}
+        </h1>
+        <button
+          #closeModalBtn
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form [formGroup]="productForm" (submit)="onSubmit()">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="recipient-name"
+              formControlName="title"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Description:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="recipient-name"
+              formControlName="description"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">ImgPath:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="recipient-name"
+              formControlName="image"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Price:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="recipient-name"
+              formControlName="price"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <div class="add-btn">
+            <button href="/" class="bn5" type="submit">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
