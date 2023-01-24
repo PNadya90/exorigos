@@ -1,25 +1,31 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar">
   <div class="container">
     <img src="/assets/Logo.jpg" alt="Logo" style="max-height: 80px" />
-    <form class="d-flex" (submit)="onSearchProduct()">
-      <input
-        class="form-control search"
-        type="text"
-        placeholder="Search"
-        aria-label="Search"
-        [formControl]="searchInput"
-      />
-      <button class="btn btn-light" type="submit">Search</button>
-    </form>
-  </div>
-  <div class="add-btn">
-    <a
-      href="/"
-      class="bn5"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
-      >Add Product</a
-    >
+
+    <div class="search-area">
+      <form class="d-flex" (submit)="onSearchProduct()">
+        <input
+          class="form-control search"
+          type="text"
+          placeholder="Search"
+          aria-label="Search"
+          [formControl]="searchInput"
+        />
+        <div class="btn-search">
+          <button class="btn btn-light" type="submit">Search</button>
+        </div>
+      </form>
+      <div class="add-btn">
+        <button
+          href="/"
+          class="bn5"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Add Product
+        </button>
+      </div>
+    </div>
   </div>
 </nav>
 <app-modal-window></app-modal-window>

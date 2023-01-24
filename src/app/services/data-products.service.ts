@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap, BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Product } from '../models/product.model';
-import { Products } from '../models/products.model';
-import { SortedObjModel } from '../models/sortedObj.model';
 
 @Injectable({
   providedIn: 'root',
@@ -40,7 +38,7 @@ export class DataProductsService {
   }
 
   fetchData() {
-    return this.http.get<Products>(this.url).pipe(
+    return this.http.get<{ products: Product[] }>(this.url).pipe(
       tap((data) => {
         this.setProducts(data.products);
       })
@@ -91,10 +89,6 @@ export class DataProductsService {
     this.applyFilters();
   }
 
-  // setSortObject(sortedObj: SortedObjModel) {
-  //   this.sortedObj = sortedObj;
-  //   this.applyFilters();
-  // }
   setSortFunction(sortFunc: any) {
     this.sortFunction = sortFunc;
     this.applyFilters();

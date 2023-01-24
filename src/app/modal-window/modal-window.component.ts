@@ -15,8 +15,11 @@ export class ModalWindowComponent implements OnInit {
     image: new FormControl(''),
     price: new FormControl(0),
   });
+
   @ViewChild('closeModalBtn') private closeBtn: ElementRef;
+
   constructor(private dataProdSrv: DataProductsService) {}
+
   ngOnInit() {
     const myModalEl = document.getElementById('exampleModal');
     myModalEl.addEventListener('hidden.bs.modal', () => {
@@ -35,9 +38,9 @@ export class ModalWindowComponent implements OnInit {
       }
     });
   }
+
   onSubmit() {
     if (this.id) {
-      // let product: Product = new Product(this.id, ...this.productForm.value);
       this.dataProdSrv.updateProduct(this.id, this.productForm.value);
     } else {
       this.dataProdSrv.addProduct(this.productForm.value);
