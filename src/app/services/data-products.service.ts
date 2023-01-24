@@ -11,6 +11,9 @@ import { SortedObjModel } from '../models/sortedObj.model';
 export class DataProductsService {
   url = '/assets/data.json';
   products: Product[];
+  nameOrDescr: string;
+  totalPages: number;
+  currPage: number = 1;
 
   $prodListFiltered: BehaviorSubject<Product[]> = new BehaviorSubject<
     Product[]
@@ -45,12 +48,21 @@ export class DataProductsService {
     return this.products.slice();
   }
 
-  filterProducts(value: string) {}
-
   applyFilters() {
     let currProd = this.products.slice();
     if (this.sortFunction) {
       currProd = currProd.sort(this.sortFunction);
+    }
+    if (this.nameOrDescr && this.nameOrDescr !== '') {
+      currProd = currProd.filter(
+        (item) =>
+          item.description
+            .toLocaleLowerCase()
+            .includes(this.nameOrDescr.toLocaleLowerCase()) ||
+          item.title
+            .toLowerCase()
+            .includes(this.nameOrDescr.toLocaleLowerCase())
+      );
     }
     this.$prodListFiltered.next(currProd);
   }
@@ -77,5 +89,10 @@ export class DataProductsService {
   // }
   setSortFunction(sortFunc: any) {
     this.sortFunction = sortFunc;
+    this.applyFilters();
+  }
+  findByNameOrDescr(searchWord: string) {
+    this.nameOrDescr = searchWord;
+    this.applyFilters();
   }
 }

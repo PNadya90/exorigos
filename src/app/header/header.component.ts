@@ -14,10 +14,9 @@ export class HeaderComponent {
   });
   constructor(private dataProdSrv: DataProductsService) {}
   onSearchProduct(e: Event) {
-    e.preventDefault();
+    // e.preventDefault();
     this.searchedValue = this.searchForm.value.searchInput;
     // console.log(this.searchedValue);
-    this.dataProdSrv.filterProducts(this.searchedValue);
-    this.searchForm.reset();
+    this.dataProdSrv.findByNameOrDescr(this.searchedValue);
   }
 }

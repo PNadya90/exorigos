@@ -43,7 +43,6 @@ export class TableComponent {
         return o1.id - o2.id;
       }
     });
-    this.dataProdSrv.applyFilters();
   }
   sortByDescr() {
     this.sortingObj = {
@@ -59,7 +58,6 @@ export class TableComponent {
         return o1.description.localeCompare(o2.description);
       }
     });
-    this.dataProdSrv.applyFilters();
   }
   sortByPrice() {
     this.sortingObj = {
@@ -75,7 +73,6 @@ export class TableComponent {
         return o1.price - o2.price;
       }
     });
-    this.dataProdSrv.applyFilters();
   }
   sortByName() {
     this.sortingObj = {
@@ -91,6 +88,5 @@ export class TableComponent {
         return o1.title.localeCompare(o2.title);
       }
     });
-    this.dataProdSrv.applyFilters();
   }
 }
