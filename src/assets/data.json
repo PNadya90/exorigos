@@ -227,6 +227,13 @@
       "description": "Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality",
       "price": 30,
       "image": "https://i.dummyjson.com/data/products/30/1.jpg"
+    },
+    {
+      "id": 31,
+      "title": "Key Holder2",
+      "description": "Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality2",
+      "price": 310,
+      "image": "https://i.dummyjson.com/data/products/30/1.jpg"
     }
   ]
 }

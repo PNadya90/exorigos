@@ -12,7 +12,7 @@ export class DataProductsService {
   url = '/assets/data.json';
   products: Product[];
   nameOrDescr: string;
-  totalPages: number;
+  $totalPages: BehaviorSubject<number> = new BehaviorSubject<number>(5);
   currPage: number = 1;
 
   $prodListFiltered: BehaviorSubject<Product[]> = new BehaviorSubject<
@@ -67,18 +67,20 @@ export class DataProductsService {
             .includes(this.nameOrDescr.toLocaleLowerCase())
       );
     }
-    currProd = currProd.slice(0, this.$pageSize.getValue());
+    const pageSize = this.$pageSize.getValue();
+    const offset = this.currPage * pageSize - pageSize;
+    currProd = currProd.slice(offset, offset + pageSize);
+    this.$totalPages.next(Math.ceil(this.products.length / pageSize));
     this.$prodListFiltered.next(currProd);
   }
 
   addProduct(newProduct: any) {
     const newProductWithId = { ...newProduct, id: this.products.length + 1 };
     this.products.push(newProductWithId);
-    // console.log(this.products);
+    this.applyFilters();
   }
 
   updateProduct(id: number, editedProduct: any) {
-    console.log(id, editedProduct);
     const selectedProduct = this.products.find((item) => item.id === id);
     selectedProduct.title = editedProduct.title;
     selectedProduct.image = editedProduct.image;
@@ -97,6 +99,11 @@ export class DataProductsService {
   }
   findByNameOrDescr(searchWord: string) {
     this.nameOrDescr = searchWord;
+    this.applyFilters();
+  }
+
+  goToPage(num: number) {
+    this.currPage = num;
     this.applyFilters();
   }
 }
