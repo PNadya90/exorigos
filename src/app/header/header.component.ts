@@ -12,6 +12,7 @@ export class HeaderComponent {
   searchInput = new FormControl();
   constructor(private dataProdSrv: DataProductsService) {}
   onSearchProduct() {
+    this.dataProdSrv.goToPage(1);
     this.searchedValue = this.searchInput.value;
     this.dataProdSrv.findByNameOrDescr(this.searchedValue);
   }
