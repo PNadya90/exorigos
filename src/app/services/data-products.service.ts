@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap, BehaviorSubject, Observable, Subject } from 'rxjs';
+import { tap, BehaviorSubject } from 'rxjs';
 import { Product } from '../models/product.model';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class DataProductsService {
   >(null);
   $pageSize: BehaviorSubject<number> = new BehaviorSubject<number>(10);
   $editProduct: BehaviorSubject<Product> = new BehaviorSubject(null);
-  // sortedObj: SortedObjModel = new SortedObjModel();
+
   sortFunction: any = null;
 
   constructor(private http: HttpClient) {

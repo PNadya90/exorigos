@@ -17,10 +17,10 @@ export class PaginationComponent implements OnInit {
         .map((el, index) => index + 1);
     });
   }
-  compare(el1, el2) {
+  compare(el1: number, el2: number) {
     return el1 === el2;
   }
-  changeNumItemsOnPage(event) {
+  changeNumItemsOnPage(event: any) {
     this.dataProdSrv.setItemsOnPage(event.target.value);
   }
   goToPage(page: number) {
