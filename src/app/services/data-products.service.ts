@@ -24,11 +24,14 @@ export class DataProductsService {
   sortFunction: any = null;
 
   constructor(private http: HttpClient) {
-    this.fetchData().subscribe();
+    this.fetchData().subscribe(() => {
+      this.applyFilters();
+    });
   }
 
   setItemsOnPage(num: number) {
     this.$pageSize.next(num);
+    this.applyFilters();
   }
 
   setProducts(newProducts: Product[]) {
@@ -64,6 +67,7 @@ export class DataProductsService {
             .includes(this.nameOrDescr.toLocaleLowerCase())
       );
     }
+    currProd = currProd.slice(0, this.$pageSize.getValue());
     this.$prodListFiltered.next(currProd);
   }
 
