@@ -21,6 +21,7 @@ export class PaginationComponent implements OnInit {
     return el1 === el2;
   }
   changeNumItemsOnPage(event: any) {
+    this.goToPage(1);
     this.dataProdSrv.setItemsOnPage(event.target.value);
   }
   goToPage(page: number) {
