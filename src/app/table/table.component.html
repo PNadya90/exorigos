@@ -1,6 +1,5 @@
 <div class="row">
   <div class="col-md-12">
-    <br />
     <table class="table table-hover">
       <thead>
         <tr>
@@ -61,20 +60,19 @@
       </thead>
       <tbody>
         <tr *ngFor="let productItem of productsList; let i = index">
-          <th scope="row">{{ productItem.id }}</th>
-          <td>{{ productItem.title }}</td>
-          <td>{{ productItem.description }}</td>
-          <td>
-            <img
-              [src]="productItem?.image"
-              alt="Img"
-              class="img-responsive"
-              style="max-height: 80px"
-            />
+          <th class="align-middle" scope="row">{{ productItem.id }}</th>
+          <td class="align-middle">
+            <strong>{{ productItem.title }}</strong>
           </td>
-          <td>{{ productItem.price | currency }}</td>
-          <td>
-            <div class="edit-btn">
+          <td class="align-middle">{{ productItem.description }}</td>
+          <td class="align-middle">
+            <img [src]="productItem?.image" alt="Img" class="img-responsive" />
+          </td>
+          <td class="align-middle">
+            <strong>{{ productItem.price | currency }}</strong>
+          </td>
+          <td class="align-middle">
+            <div>
               <button
                 href="/"
                 class="bn5"
