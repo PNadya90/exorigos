@@ -5,12 +5,51 @@
       <thead>
         <tr>
           <th scope="col">
-            <div class="id-head">ID <i class="bi bi-sort-numeric-up"></i></div>
+            <div class="id-head" (click)="sortById()">
+              ID
+              <i
+                class="bi"
+                [ngClass]="
+                  sortingObj.sortedById
+                    ? 'bi-sort-numeric-up'
+                    : 'bi-sort-numeric-down'
+                "
+              ></i>
+            </div>
           </th>
-          <th scope="col">Name <i class="bi bi-sort-alpha-up"></i></th>
-          <th scope="col">Description <i class="bi bi-sort-alpha-up"></i></th>
+          <th scope="col" (click)="sortByName()">
+            Name
+            <i
+              class="bi"
+              [ngClass]="
+                sortingObj.sortedByName
+                  ? 'bi-sort-alpha-up'
+                  : 'bi-sort-alpha-down'
+              "
+            ></i>
+          </th>
+          <th scope="col" (click)="sortByDescr()">
+            Description
+            <i
+              class="bi"
+              [ngClass]="
+                sortingObj.sortedByDescr
+                  ? 'bi-sort-alpha-up'
+                  : 'bi-sort-alpha-down'
+              "
+            ></i>
+          </th>
           <th scope="col">Picture</th>
-          <th scope="col">Price<i class="bi bi-sort-numeric-up"></i></th>
+          <th scope="col" (click)="sortByPrice()">
+            Price<i
+              class="bi"
+              [ngClass]="
+                sortingObj.sortedByPrice
+                  ? 'bi-sort-numeric-up'
+                  : 'bi-sort-numeric-down'
+              "
+            ></i>
+          </th>
           <th scope="col"></th>
         </tr>
       </thead>

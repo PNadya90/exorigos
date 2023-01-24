@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { tap, BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Product } from '../models/product.model';
 import { Products } from '../models/products.model';
+import { SortedObjModel } from '../models/sortedObj.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,9 @@ export class DataProductsService {
   >(null);
   $pageSize: BehaviorSubject<number> = new BehaviorSubject<number>(10);
   $editProduct: BehaviorSubject<Product> = new BehaviorSubject(null);
+  // sortedObj: SortedObjModel = new SortedObjModel();
+  sortFunction: any = null;
+
   constructor(private http: HttpClient) {
     this.fetchData().subscribe();
   }
@@ -43,7 +47,13 @@ export class DataProductsService {
 
   filterProducts(value: string) {}
 
-  applyFilters() {}
+  applyFilters() {
+    let currProd = this.products.slice();
+    if (this.sortFunction) {
+      currProd = currProd.sort(this.sortFunction);
+    }
+    this.$prodListFiltered.next(currProd);
+  }
 
   addProduct(newProduct: any) {
     const newProductWithId = { ...newProduct, id: this.products.length + 1 };
@@ -59,5 +69,13 @@ export class DataProductsService {
     selectedProduct.description = editedProduct.description;
     selectedProduct.price = editedProduct.price;
     this.applyFilters();
+  }
+
+  // setSortObject(sortedObj: SortedObjModel) {
+  //   this.sortedObj = sortedObj;
+  //   this.applyFilters();
+  // }
+  setSortFunction(sortFunc: any) {
+    this.sortFunction = sortFunc;
   }
 }

@@ -1,6 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Product } from '../models/product.model';
 import { DataProductsService } from '../services/data-products.service';
 
 @Component({
