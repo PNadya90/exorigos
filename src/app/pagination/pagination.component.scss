@@ -1,8 +1,3 @@
-.select-pages {
-    width: auto;
-    color: white;
-    background-color: #e14d9c;
-}
 .pagination > li > a {
     cursor: pointer;
     color: black;
@@ -11,4 +6,19 @@
     background-color: black;
     color: white;
     border: black;
+}
+.select-pages {
+    width: auto;
+    color: white;
+    background-color: #e14d9c;
+    option {
+        background-color: white;
+        color: black;
+    }
+    option:checked {
+        background-color: #e14d9c;
+    }
+    .option-area:hover {
+        background-color: #e14d9c;
+    }
 }
