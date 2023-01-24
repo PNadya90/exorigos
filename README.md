@@ -45,12 +45,13 @@ You can try this code at: https://stackblitz.com/edit/exorgiosnp-wuxuq6.
     Resolve: it pre-fetch the route data
     Preventing XSS attacks
     XSS allows attackers to inject client-side script or malicious code into web pages that can be viewed by other users. This kind of attack mostly happened via the query string, input field, request headers. For Preventing XSS attacks, we must present the user to enter malicious code from DOM. We can use DomSanitizer to prevent XSS attacks
-    it used like this :
-
-    \_htmlProperty: string = 'AAA<input type="text" name="name">BBB';
+    it used like this :    
+`
+    _htmlProperty: string = 'AAA<input type="text" name="name">BBB';
     constructor(private sanitizer: DomSanitizer) {
-    this. myHtml = sanitizer.sanitize(SecurityContext.HTML, this.\_htmlProperty);
+    this. myHtml = sanitizer.sanitize(SecurityContext.HTML, this._htmlProperty);
     }
+ `
     now myHtml is save
     Attacks from third-party libraries
     Also there are many third-party libraries components available and nowadays it is just impossible to develop the application without such libraries. These libraries may have known vulnerabilities that can be used by the attacker to inject malicious code or data into our application. These libraries can have security vulnerabilities such as CSRF, XSS, buffer overflows, etc.
