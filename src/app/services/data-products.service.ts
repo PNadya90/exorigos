@@ -12,7 +12,7 @@ export class DataProductsService {
   url = '/assets/data.json';
   products: Product[];
   nameOrDescr: string;
-  $totalPages: BehaviorSubject<number> = new BehaviorSubject<number>(5);
+  $totalPages: BehaviorSubject<number> = new BehaviorSubject<number>(1);
   currPage: number = 1;
 
   $prodListFiltered: BehaviorSubject<Product[]> = new BehaviorSubject<
@@ -53,9 +53,7 @@ export class DataProductsService {
 
   applyFilters() {
     let currProd = this.products.slice();
-    if (this.sortFunction) {
-      currProd = currProd.sort(this.sortFunction);
-    }
+    //filter by description or name
     if (this.nameOrDescr && this.nameOrDescr !== '') {
       currProd = currProd.filter(
         (item) =>
@@ -67,10 +65,14 @@ export class DataProductsService {
             .includes(this.nameOrDescr.toLocaleLowerCase())
       );
     }
+    const totalEl = currProd.length;
+    if (this.sortFunction) {
+      currProd = currProd.sort(this.sortFunction);
+    }
     const pageSize = this.$pageSize.getValue();
     const offset = this.currPage * pageSize - pageSize;
     currProd = currProd.slice(offset, offset + pageSize);
-    this.$totalPages.next(Math.ceil(this.products.length / pageSize));
+    this.$totalPages.next(Math.ceil(totalEl / pageSize));
     this.$prodListFiltered.next(currProd);
   }
 

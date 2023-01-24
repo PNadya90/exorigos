@@ -9,14 +9,10 @@ import { DataProductsService } from '../services/data-products.service';
 })
 export class HeaderComponent {
   searchedValue: string;
-  searchForm = new FormGroup({
-    searchInput: new FormControl(''),
-  });
+  searchInput = new FormControl();
   constructor(private dataProdSrv: DataProductsService) {}
-  onSearchProduct(e: Event) {
-    // e.preventDefault();
-    this.searchedValue = this.searchForm.value.searchInput;
-    // console.log(this.searchedValue);
+  onSearchProduct() {
+    this.searchedValue = this.searchInput.value;
     this.dataProdSrv.findByNameOrDescr(this.searchedValue);
   }
 }

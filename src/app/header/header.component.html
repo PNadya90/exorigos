@@ -1,17 +1,13 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container">
     <img src="/assets/Logo.jpg" alt="Logo" style="max-height: 80px" />
-    <form
-      class="d-flex"
-      (submit)="onSearchProduct($event)"
-      [formGroup]="searchForm"
-    >
+    <form class="d-flex" (submit)="onSearchProduct()">
       <input
-        class="form-control me-2"
+        class="form-control search"
         type="text"
         placeholder="Search"
         aria-label="Search"
-        formControlName="searchInput"
+        [formControl]="searchInput"
       />
       <button class="btn btn-light" type="submit">Search</button>
     </form>
