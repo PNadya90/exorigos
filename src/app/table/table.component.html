@@ -4,8 +4,8 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">
-            <div class="id-head" (click)="sortById()">
+          <th scope="col" (click)="sortById()">
+            <div class="sorted-trigger">
               ID
               <i
                 class="bi"
@@ -18,37 +18,43 @@
             </div>
           </th>
           <th scope="col" (click)="sortByName()">
-            Name
-            <i
-              class="bi"
-              [ngClass]="
-                sortingObj.sortedByName
-                  ? 'bi-sort-alpha-up'
-                  : 'bi-sort-alpha-down'
-              "
-            ></i>
+            <div class="sorted-trigger">
+              Name
+              <i
+                class="bi"
+                [ngClass]="
+                  sortingObj.sortedByName
+                    ? 'bi-sort-alpha-up'
+                    : 'bi-sort-alpha-down'
+                "
+              ></i>
+            </div>
           </th>
           <th scope="col" (click)="sortByDescr()">
-            Description
-            <i
-              class="bi"
-              [ngClass]="
-                sortingObj.sortedByDescr
-                  ? 'bi-sort-alpha-up'
-                  : 'bi-sort-alpha-down'
-              "
-            ></i>
+            <div class="sorted-trigger">
+              Description
+              <i
+                class="bi"
+                [ngClass]="
+                  sortingObj.sortedByDescr
+                    ? 'bi-sort-alpha-up'
+                    : 'bi-sort-alpha-down'
+                "
+              ></i>
+            </div>
           </th>
           <th scope="col">Picture</th>
           <th scope="col" (click)="sortByPrice()">
-            Price<i
-              class="bi"
-              [ngClass]="
-                sortingObj.sortedByPrice
-                  ? 'bi-sort-numeric-up'
-                  : 'bi-sort-numeric-down'
-              "
-            ></i>
+            <div class="sorted-trigger">
+              Price<i
+                class="bi"
+                [ngClass]="
+                  sortingObj.sortedByPrice
+                    ? 'bi-sort-numeric-up'
+                    : 'bi-sort-numeric-down'
+                "
+              ></i>
+            </div>
           </th>
           <th scope="col"></th>
         </tr>
@@ -69,14 +75,15 @@
           <td>{{ productItem.price | currency }}</td>
           <td>
             <div class="edit-btn">
-              <a
+              <button
                 href="/"
                 class="bn5"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 (click)="onEdit(productItem)"
-                >Edit</a
               >
+                Edit
+              </button>
             </div>
           </td>
         </tr>

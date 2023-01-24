@@ -1,5 +1,3 @@
-import { filter } from 'rxjs';
-
 export class ProductFilterModel {
   public sortById: string;
   public sortByName: string;
