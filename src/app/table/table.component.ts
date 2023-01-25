@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataProductsService } from '../services/data-products.service';
 import { Product } from '../models/product.model';
@@ -8,7 +8,7 @@ import { Product } from '../models/product.model';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent {
+export class TableComponent implements OnDestroy {
   subscription: Subscription;
   productsList: Product[] | undefined;
   sortingObj = {
@@ -25,6 +25,9 @@ export class TableComponent {
         this.productsList = products;
       }
     );
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
   onEdit(product: Product) {
     this.dataProdSrv.$editProduct.next(product);

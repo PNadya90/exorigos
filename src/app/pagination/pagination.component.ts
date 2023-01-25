@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { DataProductsService } from '../services/data-products.service';
 
 @Component({
@@ -6,12 +7,17 @@ import { DataProductsService } from '../services/data-products.service';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnDestroy {
   pages: number[];
   currentPage: number = 1;
+  subscription: Subscription;
   constructor(public dataProdSrv: DataProductsService) {}
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
   ngOnInit() {
-    this.dataProdSrv.$totalPages.subscribe((res) => {
+    this.subscription = this.dataProdSrv.$totalPages.subscribe((res) => {
       this.pages = Array(res)
         .fill(0)
         .map((el, index) => index + 1);
