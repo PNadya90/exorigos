@@ -7,7 +7,7 @@ import { Product } from '../models/product.model';
   providedIn: 'root',
 })
 export class DataProductsService {
-  url = '/exorigos/assets/data.json';
+  url = 'assets/data.json';
   products: Product[];
   nameOrDescr: string;
   $totalPages: BehaviorSubject<number> = new BehaviorSubject<number>(1);
