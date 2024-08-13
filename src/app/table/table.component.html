@@ -6,53 +6,41 @@
           <th scope="col" (click)="sortById()">
             <div class="sorted-trigger">
               ID
-              <i
-                class="bi"
-                [ngClass]="
+              <i class="bi" [ngClass]="
                   sortingObj.sortedById
                     ? 'bi-sort-numeric-up'
                     : 'bi-sort-numeric-down'
-                "
-              ></i>
+                "></i>
             </div>
           </th>
           <th scope="col" (click)="sortByName()">
             <div class="sorted-trigger">
               Name
-              <i
-                class="bi"
-                [ngClass]="
+              <i class="bi" [ngClass]="
                   sortingObj.sortedByName
                     ? 'bi-sort-alpha-up'
                     : 'bi-sort-alpha-down'
-                "
-              ></i>
+                "></i>
             </div>
           </th>
           <th scope="col" (click)="sortByDescr()">
             <div class="sorted-trigger">
               Description
-              <i
-                class="bi"
-                [ngClass]="
+              <i class="bi" [ngClass]="
                   sortingObj.sortedByDescr
                     ? 'bi-sort-alpha-up'
                     : 'bi-sort-alpha-down'
-                "
-              ></i>
+                "></i>
             </div>
           </th>
-          <th scope="col">Picture</th>
+          <!-- <th scope="col">Picture</th> -->
           <th scope="col" (click)="sortByPrice()">
             <div class="sorted-trigger">
-              Price<i
-                class="bi"
-                [ngClass]="
+              Price<i class="bi" [ngClass]="
                   sortingObj.sortedByPrice
                     ? 'bi-sort-numeric-up'
                     : 'bi-sort-numeric-down'
-                "
-              ></i>
+                "></i>
             </div>
           </th>
           <th scope="col"></th>
@@ -65,21 +53,16 @@
             <strong>{{ productItem.title }}</strong>
           </td>
           <td class="align-middle">{{ productItem.description }}</td>
-          <td class="align-middle">
-            <img [src]="productItem?.image" alt="Img" class="img-responsive" />
-          </td>
+          <!-- <td class="align-middle"> -->
+            <!-- <img [src]="productItem?.image" alt="Img" class="img-responsive" /> -->
+          <!-- </td> -->
           <td class="align-middle">
             <strong>{{ productItem.price | currency }}</strong>
           </td>
           <td class="align-middle">
             <div>
-              <button
-                href="/"
-                class="bn5"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                (click)="onEdit(productItem)"
-              >
+              <button href="/" class="bn5" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="onEdit(productItem)">
                 Edit
               </button>
             </div>
